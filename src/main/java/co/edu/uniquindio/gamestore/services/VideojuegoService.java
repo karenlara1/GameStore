@@ -9,6 +9,8 @@ import co.edu.uniquindio.gamestore.repository.VideojuegoRepository;
 import org.springframework.boot.context.config.ConfigDataResourceNotFoundException;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 //Indica que está clase es una clase de lógica de negocio
 public class VideojuegoService {
@@ -66,6 +68,17 @@ public class VideojuegoService {
         calcularIva(videojuego);
 
         return videojuego;
+    }
+
+    public List<Videojuego> listarTodos(){
+        List<Videojuego> lista = repository.findAll();
+
+        //Se calcula el IVA de cada videojuego listadoju
+        for (Videojuego videojuego : lista){
+            videojuego.setPrecioConIva(videojuego.getPrecio() * 1.19);
+        }
+
+        return lista;
     }
 
 }
