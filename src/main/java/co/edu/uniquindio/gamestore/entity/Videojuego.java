@@ -2,8 +2,13 @@ package co.edu.uniquindio.gamestore.entity;
 
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.time.LocalDateTime;
+@Getter
+@Setter
+
 
 @Entity //Indica que esta clase es una entidad JPA en la tabla de la BD
 public class Videojuego {
