@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface VideojuegoRepository extends JpaRepository<Videojuego, Long> {
 
@@ -15,6 +16,9 @@ public interface VideojuegoRepository extends JpaRepository<Videojuego, Long> {
 
     //Busca los titulos que contengan texto ignorando las mayusculas
     List<Videojuego> findByTituloContainingIgnoreCase(String titulo);
+
+    Optional<Videojuego> findById(Long id);
+
 
     //Consulta utilizando JPQL (orientado a las enidades)
     @Query("SELECT v FROM Videojuego v WHERE v.precio BETWEEN :min AND :max")
